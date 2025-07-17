@@ -10970,3 +10970,24 @@ section.resume-section .resume-section-content {
     padding-bottom: 5rem;
   }
 }
+
+ form input, form textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+form button, .btn {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+form button:hover, .btn:hover {
+  background-color: #0056b3;
+}
