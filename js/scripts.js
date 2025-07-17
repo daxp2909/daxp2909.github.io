@@ -32,3 +32,28 @@ window.addEventListener('DOMContentLoaded', event => {
     });
 
 });
+const form = document.getElementById('contact-form');
+const successMessage = document.getElementById('form-success');
+
+form.addEventListener('submit', function(e) {
+  e.preventDefault(); // prevent full page reload
+
+  const formData = new FormData(form);
+
+  fetch("https://formsubmit.co/ajax/your@email.com", {
+    method: "POST",
+    body: formData,
+    headers: {
+      'Accept': 'application/json'
+    }
+  }).then(response => {
+    if (response.ok) {
+      form.reset();
+      successMessage.style.display = "block";
+    } else {
+      alert("⚠️ Something went wrong. Please try again.");
+    }
+  }).catch(error => {
+    alert("⚠️ Network error. Please try again.");
+  });
+});
