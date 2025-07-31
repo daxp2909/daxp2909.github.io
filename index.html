@@ -1457,7 +1457,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div> -->
     </div>
     
-    <form id="contactForm" action="https://formsubmit.co/daxp2909@gmail.com" method="POST">
+    <form id="contactForm" >
       <input type="hidden" name="_captcha" value="false">
       <input type="hidden" name="_subject" value="New contact from portfolio!">
       <input name="name" placeholder="Your Name" required>
@@ -1466,10 +1466,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <textarea name="message" rows="4" placeholder="Sketch your message here…" required></textarea>
       <button type="submit">Send ✉️</button>
       <div id="formFeedback" class="form-feedback"></div>
+      <div id="form-success">✅ Message sent successfully!</div>
     </form>
     
     <div class="sticky-note green" style="max-width: 400px; margin: 20px auto;">
-      <p style="text-align: center;">I'll get back to you faster than you can say "agile methodology"! 📝✨</p>
+      <p style="text-align: center;">I'll get back to you faster than you can say "Worcestershire"! 📝✨</p>
     </div>
   </section>
 </main>
@@ -1550,16 +1551,16 @@ function initInteractiveElements() {
   initHandwritingAnimation();
   
   // Initialize schedule call button
-  document.getElementById('scheduleCall').addEventListener('click', function(e) {
-    e.preventDefault();
-    alert('In a real implementation, this would open a scheduling tool like Calendly. For now, please use the contact form to reach out.');
-  });
+ // document.getElementById('scheduleCall').addEventListener('click', function(e) {
+   // e.preventDefault();
+   // alert('In a real implementation, this would open a scheduling tool like Calendly. For now, please use the contact form to reach out.');
+ // });
   
   // Initialize download resume button
-  document.getElementById('downloadResume').addEventListener('click', function(e) {
-    e.preventDefault();
-    alert('In a real implementation, this would download your resume PDF. For now, please use the contact form to request a copy.');
-  });
+//  document.getElementById('downloadResume').addEventListener('click', function(e) {
+ //   e.preventDefault();
+ //   alert('In a real implementation, this would download your resume PDF. For now, please use the contact form to request a copy.');
+//  });
 }
 /* ---- Dynamic Availability Status ---- */
 function updateAvailabilityStatus() {
@@ -1851,30 +1852,30 @@ document.getElementById('backToTop').addEventListener('click', () => {
   });
 });
 /* ---- Form submission feedback ---- */
-const contactForm = document.getElementById('contactForm');
-const formFeedback = document.getElementById('formFeedback');
-contactForm.addEventListener('submit', function(e) {
-  // Form will submit normally to FormSubmit.co
-  // We'll just show a success message after a short delay
-  setTimeout(() => {
-    formFeedback.textContent = "Thanks for your message! I'll get back to you soon.";
-    formFeedback.className = "form-feedback success";
-    contactForm.reset();
-    
-    // Create celebration particles
-    for (let i = 0; i < 50; i++) {
-      setTimeout(() => {
-        const x = Math.random() * window.innerWidth;
-        const y = Math.random() * window.innerHeight;
-        createParticles(x, y, 1);
-      }, i * 20);
+const form = document.getElementById('contactForm');
+const successMessage = document.getElementById('form-success');
+
+form.addEventListener('submit', function(e) {
+  e.preventDefault(); // prevent full page reload
+
+  const formData = new FormData(form);
+
+  fetch("https://formsubmit.co/ajax/daxp2909@gmail.com", {
+    method: "POST",
+    body: formData,
+    headers: {
+      'Accept': 'application/json'
     }
-    
-    // Hide feedback after 5 seconds
-    setTimeout(() => {
-      formFeedback.className = "form-feedback";
-    }, 5000);
-  }, 1000);
+  }).then(response => {
+    if (response.ok) {
+      form.reset();
+      successMessage.style.display = "block";
+    } else {
+      alert("⚠️ Something went wrong. Please try again.");
+    }
+  }).catch(error => {
+    alert("⚠️ Network error. Please try again.");
+  });
 });
 /* ---- Add random doodles to sections ---- */
 function addRandomDoodles() {
