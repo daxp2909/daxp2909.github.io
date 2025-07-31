@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Dax Patel – Hand-Sketched Portfolio</title>
+
+  <!-- SEO / Analytics (unchanged) -->
+  <meta name="description" content="Hand-sketched portfolio of Dax Patel – Computer-engineering student & project lead.">
+  <meta name="keywords" content="Dax Patel,Sketch Portfolio,Project Manager">
+  <link rel="canonical" href="https://daxp2909.github.io">
+  <meta name="theme-color" content="#2d2d2d">
+  <meta name="google-site-verification" content="Ok4cf3HG8fvt5Q1gZLJSLk750oXZXMozaLGwAcZBJys">
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-KJNSN2CM');</script>
+
+  <!-- Handwriting & sketch fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Caveat+Brush&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+
+  <style>
+  /* ---- CSS Variables – only graphite shades ---- */
+  :root{
+    --paper:#f7f5f3;
+    --pencil:#4e4e4e;
+    --pencil-light:#8b8b8b;
+    --pencil-dark:#2d2d2d;
+    --accent:#6b6b6b;
+    --shadow:2px 2px 0 var(--pencil-dark);
+    --radius:.4rem;
+    font-size:16px;
+  }
+  body.dark{
+    --paper:#1e1e1e;
+    --pencil:#c7c7c7;
+    --pencil-light:#a0a0a0;
+    --pencil-dark:#f1f1f1;
+    --accent:#b0b0b0;
+  }
+
+  /* ---- Reset & base ---- */
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'Kalam',cursive;
+    background:var(--paper);
+    color:var(--pencil-dark);
+    line-height:1.65;
+    scroll-behavior:smooth;
+    /* hand-drawn paper SVG repeat */
+    background-image:
+      url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='.03'/%3E%3C/svg%3E");
+  }
+  h1,h2,h3{font-family:'Caveat Brush',cursive;line-height:1.1;font-weight:400}
+  h1{font-size:clamp(3.2rem,8vw,5.5rem)}
+  h2{font-size:2.2rem;margin:2.5rem 0 .5rem}
+  h3{font-size:1.6rem}
+  a{color:var(--accent);text-decoration:none;border-bottom:1px dashed var(--accent)}
+  section.page{max-width:900px;margin:auto;padding:3rem 1.5rem;scroll-margin-top:4.5rem}
+  header{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:.75rem 1.5rem;border-bottom:2px dashed var(--pencil);
+    position:sticky;top:0;background:var(--paper);z-index:10;
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+  }
+  .logo{font-family:'Caveat Brush',cursive;font-size:1.9rem}
+  #desktopNav a,#desktopNav button{margin-left:.6rem;padding:.35rem .7rem;border:2px dashed var(--pencil);background:none;color:var(--pencil);border-radius:var(--radius);cursor:pointer;font-family:'Kalam',cursive;font-size:.95rem;transition:.2s}
+  #desktopNav a:hover{background:var(--pencil-dark);color:var(--paper)}
+  #hamburger{display:none;font-size:2rem;background:none;border:none;cursor:pointer;color:var(--pencil)}
+  #sideMenu{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:20;opacity:0;visibility:hidden;transition:opacity .25s}
+  #sideMenu.open{opacity:1;visibility:visible}
+  .drawer{position:absolute;top:0;left:-260px;width:260px;height:100%;background:var(--paper);box-shadow:4px 0 12px rgba(0,0,0,.15);transition:left .3s ease;display:flex;flex-direction:column;padding:1rem 0}
+  #sideMenu.open .drawer{left:0}
+  .drawer a{padding:1rem 1.5rem;font-family:'Kalam',cursive;font-size:1.25rem;border-bottom:1px dashed var(--pencil)}
+  .closeBtn{align-self:flex-end;margin:0 .5rem .5rem;font-size:2rem;background:none;border:none;color:var(--pencil)}
+  @media(max-width:768px){#hamburger{display:block}#desktopNav{display:none}}
+  @media(min-width:769px){#hamburger{display:none}#desktopNav{display:flex;align-items:center}}
+
+  /* ---- Hero sketch grid ---- */
+  .hero{display:grid;gap:2rem;align-items:center;margin-top:1rem}
+  @media(min-width:700px){.hero{grid-template-columns:2fr 1fr}}
+  .profile-sketch{
+    width:100%;
+    border:2px dashed var(--pencil);
+    border-radius:var(--radius);
+    padding:.4rem;
+    background:var(--paper);
+    box-shadow:var(--shadow);
+    transform:rotate(-1deg);
+  }
+
+  /* ---- Hand-written note card ---- */
+  .note{
+    background:var(--paper);
+    border:2px dashed var(--pencil);
+    padding:1.5rem;
+    transform:rotate(1.5deg);
+    box-shadow:var(--shadow);
+    border-radius:var(--radius);
+  }
+
+  /* ---- Timeline (pencil line) ---- */
+  .timeline{position:relative;padding-left:1.5rem}
+  .timeline::before{
+    content:'';
+    position:absolute;left:.4rem;top:0;bottom:0;
+    width:1px;background:var(--pencil);
+  }
+  .timeline li{list-style:none;position:relative;margin-bottom:1.2rem}
+  .timeline li::before{
+    content:'';
+    position:absolute;left:-.9rem;top:.2rem;
+    width:.6rem;height:.6rem;
+    border:2px solid var(--pencil-dark);
+    border-radius:50%;
+    background:var(--paper);
+  }
+
+  /* ---- Cards & Projects ---- */
+  .projects,.skills{display:grid;gap:1.2rem;grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+  .card{
+    border:2px dashed var(--pencil);
+    border-radius:var(--radius);
+    padding:1.3rem;
+    background:var(--paper);
+    position:relative;
+    box-shadow:var(--shadow);
+    transform:rotate(.5deg);
+    transition:.2s;
+  }
+  .card:nth-child(even){transform:rotate(-.5deg)}
+  .card:hover{transform:scale(1.03) rotate(0);box-shadow:3px 3px 0 var(--pencil-dark)}
+  .card h3{position:relative}
+  .card h3::after{
+    content:'';
+    position:absolute;left:0;bottom:-3px;
+    width:100%;height:2px;background:var(--pencil-dark);
+    border-radius:50px;
+  }
+
+  /* ---- Form ---- */
+  form{max-width:28rem;margin:auto;display:grid;gap:.8rem}
+  input,textarea{
+    width:100%;padding:.6rem;font-family:'Kalam',cursive;font-size:1rem;
+    border:2px dashed var(--pencil);background:transparent;
+    border-radius:var(--radius);resize:vertical;color:var(--pencil-dark)
+  }
+  button[type=submit]{
+    font-family:'Caveat Brush',cursive;font-size:1.3rem;
+    background:var(--pencil-dark);color:var(--paper);
+    border:none;padding:.6rem 1.2rem;cursor:pointer;
+    border-radius:var(--radius);box-shadow:var(--shadow)
+  }
+  footer{text-align:center;padding:2rem 0;font-size:.9rem;color:var(--pencil-light)}
+  #desktopNav a,
+.drawer a{
+  transition:transform .15s, box-shadow .15s;
+}
+#desktopNav a:hover,
+.drawer a:hover{
+  transform:translate(1px,1px) rotate(-.5deg);
+  box-shadow:1px 1px 0 var(--pencil-dark);
+}
+
+/* 2.  Hamburger & close button press */
+#hamburger,
+.closeBtn{
+  transition:transform .15s;
+}
+#hamburger:hover,
+.closeBtn:hover{
+  transform:scale(1.1) rotate(-8deg);
+}
+
+/* 3.  Cards lift & tilt like paper cut-outs */
+.card{
+  transition:transform .25s, box-shadow .25s;
+}
+.card:hover{
+  transform:translateY(-4px) rotate(.8deg);
+  box-shadow:3px 3px 0 var(--pencil-dark);
+}
+
+/* 4.  Button “ink-press” */
+button[type=submit]{
+  transition:transform .1s, box-shadow .1s;
+}
+button[type=submit]:active{
+  transform:translate(2px,2px);
+  box-shadow:none;
+}
+
+/* 5.  Social icons scribble */
+.social-icon{
+  display:inline-block;
+  transition:transform .2s;
+}
+.social-icon:hover{
+  transform:scale(1.25) rotate(-4deg);
+}
+
+/* 6.  Tiny paper-texture shift on toggle */
+body{
+  transition:background-color .4s;
+}
+body.dark{
+  background-image:
+    url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='.05'/%3E%3C/svg%3E");
+}
+  </style>
+</head>
+<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KJNSN2CM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<header>
+  <span class="logo">Dax Patel</span>
+
+  <!-- Desktop Nav -->
+  <nav id="desktopNav">
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#education">Education</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+    <button id="modeBtn" onclick="toggleMode()" title="toggle theme">🌑</button>
+  </nav>
+
+  <button id="hamburger" aria-label="open menu">✏️</button>
+</header>
+
+<!-- Mobile Drawer -->
+<div id="sideMenu" aria-hidden="true">
+  <div class="drawer">
+    <button class="closeBtn" aria-label="close menu">&times;</button>
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#education">Education</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+    <a href="#" onclick="toggleMode();return false">Toggle&nbsp;theme</a>
+  </div>
+</div>
+
+<main>
+  <!-- About -->
+  <section id="about" class="page">
+    <div class="hero">
+      <div>
+        <h1>Dax&nbsp;<span style="color:var(--accent)">Patel</span></h1>
+        <h4>I like clean boards, clear priorities, and conversations that get to the point but the real magic is adapting because no two teams or projects are ever the same.</h4>
+      </div>
+      <!-- Replace with your sketch -->
+      <img class="profile-sketch" src="assets/img/profile.jpg" alt="Dax Patel sketch">
+    </div>
+    <P>I like being the one who connects the dots, keeps the chaos out, and helps work actually happen.<P></P>
+    <p>Over time, I’ve learned that managing projects isn’t about control. It’s about understanding people how they work, what slows them down, and what helps them move faster without burning out. I’ve worked with teams, tools, timelines, and clients who change their mind three times a week and somehow, I still enjoy it.</p>
+    <p><em>Always curious, always listening, always learning…</em></p>
+    <p style="margin-top:.8rem">
+          <a href="mailto:daxp2909@gmail.com">daxp2909@gmail.com</a><br>
+          <a href="https://linkedin.com/" style="margin-right:.6rem">LinkedIn</a>
+          <a href="https://github.com/" style="margin-right:.6rem">GitHub</a>
+          <a href="https://twitter.com/" style="margin-right:.6rem">Twitter</a>
+          <a href="https://facebook.com/">Facebook</a>
+        </p>  
+  </section>
+
+  <!-- Experience -->
+  <section id="experience" class="page">
+    <h2>Experience</h2>
+    <p>&nbsp;</p>
+    <ul >
+      <li>
+        <h3>Project Manager – Cirkle Studio</h3>
+        <span>Dec 2024 – Present</span>
+        <ul><li>Leading multiple client-facing projects from scoping to delivery, across design and development teams.</li>
+          <li>Using <b>modern PM tools</b> to <u>track deliverables</u>, <u>manage timelines</u>, and <u>prioritize feedback loops</u> in real time.</li>
+          <li>Continuously improving communication flows and adapting PM styles based on team dynamics.</li>
+          <li>Gaining deep insight into <b>remote collaboration</b>, productivity balancing, and maintaining alignment between stakeholders.</li>
+        </ul> 
+      </li>
+      <br>
+      <li>
+        <h3>Project Manager – Netsofters LLP</h3>
+        <span>Jun 2024 – Dec 2024</span>
+        <ul><li>Acted as the key bridge between clients and developers — ensuring clear task breakdowns, deadline alignment, and minimal distractions.</li>
+          <li>Designed and iterated <u>custom workflows</u> and <u>process diagrams</u> to increase productivity and <b>reduce scope creep</b>.</li>
+        <li>Managed <u>resource allocation</u>, handled shifting priorities, and ensured transparent reporting on project status.</li>
+      <li>Delivered projects <b>on time</b>, receiving <b>positive feedback</b> for structured communication and risk handling.</li></ul>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Education -->
+  <section id="education" class="page">
+    <h2>Education</h2>
+    <p>&nbsp;</p>
+    <ul>
+      <li>
+        <h3>Bachelor in Computer Engineering</h3>
+        <h4>Sep 2023 – Present | GPA: 7.8</h4>
+        <p>Focused on <b>software project management</b>, <u>database systems</u>, <u>software engineering</u> , and <u>IT infrastructure</u> all core to managing technical teams effectively. Gained understanding of <b>agile practices</b>, <u>system architecture</u>, and <b>cross-functional coordination</b> during project labs and team-based assignments. Actively applying learning to real-world project planning and communication workflows in parallel with education.</p>
+      </li>
+      <br>
+      <li>
+        <h3>Diploma in Computer Engineering </h3>
+        <h4> Sep 2020 – Jul 2023 | GPA 8.8</h4>
+        <p>Covered practical subjects like <u>Database Management Systems</u>, <u>Operating Systems</u>, <b>Software Project Management</b>, and <u>Web Development</u>. Focused less on low-level programming, and more on high-level software processes, UI logic, and workflow alignment. Developed foundational understanding of SDLC phases, basic networking, and how to document and track <b>project requirements</b>.</p>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="page">
+    <h2>Projects</h2>
+    <p>&nbsp;</p>
+    <div class="projects">
+      <article class="card">
+        <h3>HopeLine </h3>
+        <h4>Role: Project Lead</h4>
+        <p>Led the project of a mental health platform that connects users with mental health professionals. Collaborated with counselors and testers to fine-tune tone, flow, and engagement.</p>
+      </article>
+      <article class="card">
+        <h3>SarthiAI</h3>
+        <h4>Role: Technical Lead</h4>
+        <p>Built a spiritual chatbot offering personalized Gita-based advice using AI-driven dialogue systems. Designed core logic and module for scalable Q&A interactions.</p>
+      </article>
+      <article class="card">
+        <h3>Smart Traffic Light</h3>
+        <h4>Role: Project Lead</h4>
+        <p>Designed an intelligent traffic control system that adjusts signal timing based congestion data. Led the team through modeling, simulation, and presentation phases with clear role division and progress tracking.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" class="page">
+    <h2>Toolbox & Doodles</h2>
+    <p>&nbsp;</p>
+    <div class="skills">
+      <div class="card"><h3>P-M Tools</h3>
+        <li>ClickUp </li>
+        <li>Asana </li>
+        <li>Monday.com</li>
+        <li>Upwork</li>
+        <li>Slack </li>
+      </div>
+      <div class="card"><h3>Languages</h3>
+        <li>Gujarati – Native</li><li>Hindi – Fluent</li><li>English – Professional</li>
+      </div>
+      <div class="card"><h3>Off-Screen Sketches</h3>
+        <li>Reading</li>
+          <li >Writing</li>
+          <li>Sports</li>
+          <li>Problem Solving</li>
+          <li>Putting leg on other's shoe</li>
+          
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="page">
+    <h2>Drop a Note</h2>
+    <form action="https://formsubmit.co/daxp2909@gmail.com" method="POST">
+      <input type="hidden" name="_captcha" value="false">
+      <input name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" rows="4" placeholder="Sketch your message here…" required></textarea>
+      <button type="submit">Send ✉️</button>
+    </form>
+  </section>
+</main>
+
+<footer>&copy; <span id="year"></span> Dax Patel – sketched with ✏️ &amp; 💻</footer>
+
+<script>
+/* ---- Smooth scroll anchors ---- */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    const tgt=document.querySelector(a.getAttribute('href'));
+    if(tgt) tgt.scrollIntoView({behavior:'smooth'});
+    /* close drawer */
+    document.getElementById('sideMenu').classList.remove('open');
+    document.getElementById('sideMenu').setAttribute('aria-hidden','true');
+  });
+});
+
+/* ---- Mobile drawer controls ---- */
+const sideMenu=document.getElementById('sideMenu');
+document.getElementById('hamburger').addEventListener('click',()=>{
+  sideMenu.classList.add('open');
+  sideMenu.setAttribute('aria-hidden','false');
+});
+document.querySelector('.closeBtn').addEventListener('click',()=>{
+  sideMenu.classList.remove('open');
+  sideMenu.setAttribute('aria-hidden','true');
+});
+sideMenu.addEventListener('click',e=>{
+  if(e.target===sideMenu){
+    sideMenu.classList.remove('open');
+    sideMenu.setAttribute('aria-hidden','true');
+  }
+});
+
+/* ---- Dark / Light toggle ---- */
+function toggleMode(){
+  document.body.classList.toggle('dark');
+  document.getElementById('modeBtn').textContent=document.body.classList.contains('dark')?'☀️':'🌑';
+}
+document.getElementById('year').textContent=new Date().getFullYear();
+const clickSound = new Audio('data:audio/wav;base64,UklGRigAAABXQVZFZm10IBIAAAABAAEARKwAAIhYAQACABAAAABkYXRhAgAAAAEA');
+document.addEventListener('click', e=>{
+  if(e.target.tagName==='A' || e.target.tagName==='BUTTON'){
+    clickSound.currentTime=0;
+    clickSound.play().catch(()=>{});
+  }
+});
+
+</script>
+</body>
+</html>
