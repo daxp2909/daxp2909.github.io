@@ -435,81 +435,6 @@
     transform: translateY(-5px) rotate(15deg);
   }
   
-  /* ---- Loading animation ---- */
-  .loader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--paper);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 100;
-    transition: opacity 0.5s, visibility 0.5s;
-  }
-  .loader.hidden {
-    opacity: 0;
-    visibility: hidden;
-  }
-  .pencil-container {
-    position: relative;
-    width: 200px;
-    height: 100px;
-  }
-  .pencil {
-    width: 150px;
-    height: 20px;
-    background: var(--pencil-dark);
-    position: absolute;
-    top: 40px;
-    left: 0;
-    border-radius: 2px;
-    transform-origin: right center;
-    animation: draw 2s infinite ease-in-out;
-  }
-  .pencil::before {
-    content: '';
-    position: absolute;
-    left: -15px;
-    top: 0;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 10px 15px 10px 0;
-    border-color: transparent var(--pencil-dark) transparent transparent;
-  }
-  .pencil::after {
-    content: '';
-    position: absolute;
-    right: -10px;
-    top: 5px;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 5px 0 5px 10px;
-    border-color: transparent transparent transparent var(--accent);
-  }
-  .paper-line {
-    position: absolute;
-    width: 180px;
-    height: 2px;
-    background: var(--pencil-light);
-    top: 50px;
-    left: 20px;
-    transform-origin: left center;
-    animation: draw-line 2s infinite ease-in-out;
-  }
-  @keyframes draw {
-    0%, 100% { transform: rotate(0deg) translateX(0); }
-    50% { transform: rotate(-5deg) translateX(30px); }
-  }
-  @keyframes draw-line {
-    0%, 100% { width: 0; opacity: 0; }
-    50% { width: 180px; opacity: 1; }
-  }
-  
   /* ---- Form feedback ---- */
   .form-feedback {
     text-align: center;
@@ -1099,13 +1024,6 @@
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KJNSN2CM"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- Loading animation -->
-<div class="loader" id="loader">
-  <div class="pencil-container">
-    <div class="paper-line"></div>
-    <div class="pencil"></div>
-  </div>
-</div>
 <!-- Interactive Background -->
 <div class="interactive-bg" id="interactiveBg"></div>
 <!-- Dynamic Availability Badge -->
@@ -1162,7 +1080,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     
     <div class="sticky-note yellow" id="sticky1">
-      <p><strong>Fun fact:</strong> I can solve a Rubik's cube in under 2 minutes while explaining agile methodologies!</p>
+      <p><strong>Fun fact:</strong> I've successfully managed projects across three different time zones without missing a single deadline!</p>
       <div class="doodle doodle-star" style="top: 5px; right: 10px;"></div>
     </div>
     
@@ -1322,9 +1240,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="case-study-results">
             <h4>Results</h4>
             <ul>
-              <li>Successfully built a platform that addresses a critical need in mental healthcare</li>
+              <li>Successfully launched a platform that addresses a critical need in mental healthcare</li>
               <li>Created an intuitive interface that reduces barriers to seeking help</li>
-              <li>Connected with qualified professionals ready to provide support</li>
+              <li>Established a network of qualified professionals ready to provide support</li>
+              <li>Received positive feedback from beta testers for its compassionate approach</li>
             </ul>
           </div>
         </div>
@@ -1364,7 +1283,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <li>Created an innovative fusion of ancient wisdom and modern technology</li>
               <li>Developed a scalable system capable of handling diverse user queries</li>
               <li>Built a platform that makes spiritual wisdom accessible to a wider audience</li>
-              <li>Received positive feedback form stackholders</li>
+              <li>Received positive feedback for the authenticity and relevance of responses</li>
             </ul>
           </div>
         </div>
@@ -1404,6 +1323,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <li>Created a working prototype that demonstrates the potential of smart traffic systems</li>
               <li>Developed a scalable model that could be implemented in urban environments</li>
               <li>Presented findings that showed significant potential for reducing traffic congestion</li>
+              <li>Received recognition for innovative approach to urban infrastructure challenges</li>
             </ul>
           </div>
         </div>
@@ -1488,6 +1408,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div class="skill-name">Problem Solving</div>
             <div class="skill-description">Finding creative solutions to complex challenges</div>
           </div>
+          <div class="skill-item">
+            <div class="skill-name">Putting leg on other's shoe</div>
+            <div class="skill-description">Empathy and understanding different perspectives</div>
+          </div>
         </div>
       </div>
     </div>
@@ -1568,27 +1492,23 @@ let mouseY = 0;
 let stickyNotes = [];
 let timelineItems = [];
 let card3DElements = [];
-/* ---- Loading screen ---- */
+/* ---- Initialize Interactive Elements ---- */
 window.addEventListener('load', () => {
-  setTimeout(() => {
-    document.getElementById('loader').classList.add('hidden');
-    
-    // Initialize interactive elements
-    initInteractiveElements();
-    
-    // Start animation loops
-    animateParticles();
-    animateInteractiveBackground();
-    
-    // Update availability status
-    updateAvailabilityStatus();
-    
-    // Set up availability check interval
-    setInterval(updateAvailabilityStatus, 60000); // Check every minute
-    
-    // Track visitor analytics
-    trackVisitor();
-  }, 1000);
+  // Initialize interactive elements
+  initInteractiveElements();
+  
+  // Start animation loops
+  animateParticles();
+  animateInteractiveBackground();
+  
+  // Update availability status
+  updateAvailabilityStatus();
+  
+  // Set up availability check interval
+  setInterval(updateAvailabilityStatus, 60000); // Check every minute
+  
+  // Track visitor analytics
+  trackVisitor();
 });
 /* ---- Track Visitor Analytics ---- */
 function trackVisitor() {
