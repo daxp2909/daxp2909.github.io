@@ -52,7 +52,6 @@
     --sticky-green:#3d5d3e;
     --sticky-blue:#3d4d5d;
   }
-
   /* ---- Reset & base ---- */
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   body{
@@ -114,6 +113,10 @@
     transition: transform 0.3s ease;
     position: relative;
     overflow: hidden;
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 1/1;
+    object-fit: cover;
   }
   .profile-sketch::after {
     content: '';
@@ -810,9 +813,14 @@
     border: 2px dashed var(--pencil);
     border-radius: var(--radius);
     overflow: hidden;
-    height: 200px;
+    height: 0;
+    padding-bottom: 75%; /* 3:4 aspect ratio */
+    position: relative;
   }
   .case-study-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -980,43 +988,391 @@
   }
   
   /* ---- Responsive Design ---- */
-  @media (max-width: 768px) {
+  
+  /* Base adjustments for all screens */
+  @media (max-width: 480px) {
+    :root {
+      font-size: 14px;
+    }
+  }
+
+  @media (min-width: 481px) and (max-width: 768px) {
+    :root {
+      font-size: 15px;
+    }
+  }
+
+  @media (min-width: 1441px) {
+    :root {
+      font-size: 18px;
+    }
+  }
+
+  /* Profile image responsiveness */
+  .profile-sketch {
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+  }
+
+  /* Project image responsiveness */
+  .case-study-image {
+    width: 100%;
+    height: 0;
+    padding-bottom: 75%; /* 3:4 aspect ratio */
+    position: relative;
+  }
+
+  .case-study-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Hero section adjustments */
+  @media (max-width: 700px) {
     .hero {
       grid-template-columns: 1fr;
     }
-    .section-header h2::before, .section-header h2::after {
-      width: 30px;
+    
+    .hero h1 {
+      font-size: clamp(2.5rem, 10vw, 3.5rem);
     }
-    .timeline-item {
-      padding-left: 60px;
+    
+    .hero h2 {
+      font-size: 1.5rem;
     }
-    .timeline-icon {
-      width: 30px;
-      height: 30px;
-      font-size: 1rem;
-      left: 5px;
-    }
+  }
+
+  /* Timeline adjustments */
+  @media (max-width: 768px) {
     .sketch-timeline::before {
       left: 20px;
     }
+    
+    .timeline-item {
+      padding-left: 50px;
+    }
+    
+    .timeline-icon {
+      left: 5px;
+      width: 30px;
+      height: 30px;
+      font-size: 0.9rem;
+    }
+  }
+
+  /* Grid adjustments */
+  @media (max-width: 480px) {
+    .projects, .skills {
+      grid-template-columns: 1fr;
+    }
+    
+    .value-points {
+      grid-template-columns: 1fr;
+    }
+    
+    .case-study-content {
+      grid-template-columns: 1fr;
+    }
+    
+    .contact-options {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (min-width: 481px) and (max-width: 768px) {
+    .projects, .skills {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .value-points {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .projects, .skills {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .value-points {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1025px) and (max-width: 1440px) {
+    .projects, .skills {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .value-points {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1441px) {
+    .projects, .skills {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .value-points {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  /* Section padding adjustments */
+  @media (max-width: 768px) {
+    section.page {
+      padding: 2rem 1rem;
+    }
+  }
+
+  @media (min-width: 769px) and (max-width: 1024px) {
+    section.page {
+      padding: 2.5rem 1.5rem;
+    }
+  }
+
+  /* Header adjustments */
+  @media (max-width: 480px) {
+    header {
+      padding: 0.5rem 1rem;
+    }
+    
+    .logo {
+      font-size: 1.5rem;
+    }
+    
+    #hamburger {
+      font-size: 1.5rem;
+    }
+  }
+
+  /* Availability badge adjustments */
+  @media (max-width: 768px) {
     .availability-badge {
       top: 70px;
       right: 10px;
       font-size: 0.8rem;
       padding: 6px 12px;
     }
-    .cta-heading {
-      font-size: 2rem;
+  }
+
+  /* Download resume button adjustments */
+  @media (max-width: 480px) {
+    .download-resume {
+      width: 45px;
+      height: 45px;
+      font-size: 1.2rem;
+      bottom: 15px;
+      right: 15px;
     }
+  }
+
+  /* Form adjustments */
+  @media (max-width: 480px) {
+    form {
+      max-width: 100%;
+      padding: 0 1rem;
+    }
+  }
+
+  /* Sticky notes adjustments */
+  @media (max-width: 480px) {
+    .sticky-note {
+      font-size: 1rem;
+      padding: 12px;
+      margin: 15px 0;
+    }
+  }
+
+  /* Timeline content adjustments */
+  @media (max-width: 768px) {
+    .timeline-content {
+      padding: 1rem;
+    }
+    
+    .timeline-content h3 {
+      font-size: 1.3rem;
+    }
+    
+    .timeline-content ul {
+      padding-left: 1.2rem;
+    }
+  }
+
+  /* Card adjustments */
+  @media (max-width: 480px) {
+    .card {
+      padding: 1rem;
+    }
+    
+    .card h3 {
+      font-size: 1.3rem;
+    }
+  }
+
+  /* Section header adjustments */
+  @media (max-width: 768px) {
+    .section-header h2::before, 
+    .section-header h2::after {
+      width: 20px;
+    }
+  }
+
+  /* CTA section adjustments */
+  @media (max-width: 480px) {
+    .cta-heading {
+      font-size: 1.8rem;
+    }
+    
     .cta-subheading {
       font-size: 1rem;
     }
-    .download-resume {
-      bottom: 20px;
-      right: 20px;
-      width: 50px;
-      height: 50px;
+    
+    .cta-buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .cta-button {
+      width: 100%;
+      max-width: 280px;
+    }
+  }
+
+  /* Skill bars adjustments */
+  @media (max-width: 480px) {
+    .skill-bar {
+      height: 12px;
+    }
+  }
+
+  /* Value proposition adjustments */
+  @media (max-width: 768px) {
+    .value-prop {
+      padding: 1.5rem;
+    }
+    
+    .value-prop h3 {
+      font-size: 1.5rem;
+    }
+  }
+
+  /* Case study adjustments */
+  @media (max-width: 768px) {
+    .case-study {
+      padding: 1rem;
+    }
+    
+    .case-study-title {
+      font-size: 1.3rem;
+    }
+  }
+
+  /* Contact options adjustments */
+  @media (max-width: 480px) {
+    .contact-option {
+      padding: 1rem;
+    }
+    
+    .contact-option-icon {
+      font-size: 1.5rem;
+    }
+  }
+
+  /* Footer adjustments */
+  @media (max-width: 480px) {
+    footer {
+      font-size: 0.8rem;
+      padding: 1.5rem 0;
+    }
+  }
+
+  /* Interactive background adjustments */
+  @media (max-width: 768px) {
+    .interactive-bg {
+      opacity: 0.03;
+    }
+  }
+
+  /* Back to top button adjustments */
+  @media (max-width: 480px) {
+    #backToTop {
+      width: 45px;
+      height: 45px;
       font-size: 1.2rem;
+      bottom: 15px;
+      left: 15px;
+    }
+  }
+  
+  /* Cross-browser compatibility fixes */
+  @supports not (aspect-ratio: 1/1) {
+    .profile-sketch {
+      height: 400px;
+    }
+  }
+  
+  @supports not (aspect-ratio: 3/4) {
+    .case-study-image {
+      height: 300px;
+    }
+  }
+  
+  /* Firefox specific fixes */
+  @-moz-document url-prefix() {
+    .doodle-star {
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    }
+  }
+  
+  /* Safari specific fixes */
+  @media not all and (min-resolution:.001dpcm) {
+    @supports (-webkit-appearance:none) {
+      .sticky-note {
+        transform: rotate(-1deg) translateZ(0);
+      }
+    }
+  }
+  
+  /* Edge specific fixes */
+  @supports (-ms-ime-align: auto) {
+    .skill-level::after {
+      background: linear-gradient(to right, transparent, var(--accent));
+    }
+  }
+  
+  /* IE11 fallbacks (limited support) */
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    .hero {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .projects, .skills {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    
+    .card {
+      width: calc(50% - 1.2rem);
+      margin: 0.6rem;
+    }
+    
+    .value-points {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    
+    .value-point {
+      width: calc(50% - 1.5rem);
+      margin: 0.75rem;
     }
   }
   </style>
@@ -1464,7 +1820,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <input type="hidden" name="_subject" value="New contact from portfolio!">
   <input type="hidden" name="_template" value="table">
   <input type="text" name="_honey" style="display:none"> -->
-
   <input name="name" placeholder="Your Name" required>
   <input type="email" name="email" placeholder="Your Email" required>
   <input name="company" placeholder="Your Company (Optional)">
@@ -1472,8 +1827,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <button type="submit">Send ✉️</button>
   <div id="formFeedback" class="form-feedback"></div>
 </form>
-
-
 
 
 <div class="sticky-note green" style="max-width: 400px; margin: 20px auto;">
@@ -1861,12 +2214,9 @@ document.getElementById('backToTop').addEventListener('click', () => {
 /* ---- Form submission feedback ---- */
 const form = document.getElementById('contactForm');
 const successMessage = document.getElementById('form-success');
-
 form.addEventListener('submit', function(e) {
   e.preventDefault(); // prevent full page reload
-
   const formData = new FormData(form);
-
   fetch("https://formsubmit.co/ajax/daxp2909@gmail.com", {
     method: "POST",
     body: formData,
