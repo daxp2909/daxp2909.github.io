@@ -2218,12 +2218,7 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
       feedbackElement.className = "form-feedback error";
     }
   })
-  .catch(error => {
-    // Network error
-    feedbackElement.textContent = "Network error. Please check your connection and try again.";
-    feedbackElement.className = "form-feedback error";
-    console.error('Form submission error:', error);
-  })
+  
   .finally(() => {
     // Hide feedback after 5 seconds
     setTimeout(() => {
@@ -2275,3 +2270,4 @@ window.addEventListener('load', addRandomDoodles);
 </script>
 </body>
 </html>
+
