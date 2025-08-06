@@ -2198,33 +2198,66 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
   feedbackElement.style.display = "block";
   
   // Submit the form using fetch
-  fetch(form.action, {
-    method: 'POST',
+  fetch("https://formsubmit.co/ajax/daxp2909@gmail.com", {
+    method: "POST",
     body: formData,
     headers: {
       'Accept': 'application/json'
     }
   })
-  .then(response => response.json())
-  .then(data => {
-    if (data.success) {
-      // Success message
-      feedbackElement.textContent = "Thank you! Your message has been sent successfully.";
-      feedbackElement.className = "form-feedback success";
-      form.reset(); // Reset form fields
+  .then(response => {
+    // FormSubmit.co might return HTML on success instead of JSON
+    // Check if the response is successful (status code 200-299)
+    if (response.ok) {
+      // Try to parse as JSON, but if that fails, we still consider it a success
+      return response.json().catch(() => {
+        return { success: true };
+      });
     } else {
-      // Error message
-      feedbackElement.textContent = "Oops! Something went wrong. Please try again.";
-      feedbackElement.className = "form-feedback error";
+      throw new Error(`Server responded with status: ${response.status}`);
     }
   })
-  
+  .then(data => {
+    // Success message
+    feedbackElement.textContent = "Thank you! Your message has been sent successfully.";
+    feedbackElement.className = "form-feedback success";
+    form.reset(); // Reset form fields
+    
+    // Log the actual response for debugging
+    console.log("Form submission response:", data);
+  })
+  .catch(error => {
+    // Network error or FormSubmit.co error
+    console.error("Form submission error:", error);
+    feedbackElement.textContent = "There was an error sending your message. Please try again or email me directly at daxp2909@gmail.com";
+    feedbackElement.className = "form-feedback error";
+  })
   .finally(() => {
     // Hide feedback after 5 seconds
     setTimeout(() => {
       feedbackElement.style.display = "none";
     }, 5000);
   });
+});
+
+// Check if we were redirected after successful form submission
+window.addEventListener('load', function() {
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get('form') === 'success') {
+    const feedbackElement = document.getElementById('formFeedback');
+    feedbackElement.textContent = "Thank you! Your message has been sent successfully.";
+    feedbackElement.className = "form-feedback success";
+    feedbackElement.style.display = "block";
+    
+    // Hide feedback after 5 seconds
+    setTimeout(() => {
+      feedbackElement.style.display = "none";
+    }, 5000);
+    
+    // Clean up URL
+    const newUrl = window.location.pathname + window.location.hash;
+    window.history.replaceState({}, document.title, newUrl);
+  }
 });
 /* ---- Add random doodles to sections ---- */
 function addRandomDoodles() {
@@ -2270,4 +2303,3 @@ window.addEventListener('load', addRandomDoodles);
 </script>
 </body>
 </html>
-
