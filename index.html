@@ -87,8 +87,94 @@
     box-shadow:0 2px 8px rgba(0,0,0,.08);
   }
   .logo{font-family:'Caveat Brush',cursive;font-size:1.9rem}
-  #desktopNav a,#desktopNav button{margin-left:.6rem;padding:.35rem .7rem;border:2px dashed var(--pencil);background:none;color:var(--pencil);border-radius:var(--radius);cursor:pointer;font-family:'Kalam',cursive;font-size:.95rem;transition:.2s}
-  #desktopNav a:hover{background:var(--pencil-dark);color:var(--paper)}
+  
+  /* ---- NEW NAVIGATION STYLES ---- */
+  #desktopNav {
+    display: flex;
+    align-items: center;
+  }
+  
+  #desktopNav .nav-item {
+    position: relative;
+    cursor: pointer;
+    padding: 5px 14px;
+    margin-left: .6rem;
+    border: none;
+    background: none;
+    color: var(--pencil);
+    font-family: 'Kalam', cursive;
+    font-size: .95rem;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  
+  #desktopNav .nav-item:hover {
+    color: var(--accent);
+  }
+  
+  #desktopNav .circle-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 280%;
+    height: 156%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  #desktopNav .nav-item.active .circle-wrapper {
+    opacity: 1;
+  }
+  
+  #desktopNav svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+  
+  #desktopNav path.circle-path {
+    stroke: var(--accent);
+    stroke-width: 3;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+  }
+  
+  #desktopNav .nav-item.active path.circle-path {
+    animation: drawCircle 1.2s ease forwards;
+  }
+  
+  @keyframes drawCircle {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+  
+  #desktopNav button {
+    margin-left: .6rem;
+    padding: .35rem .7rem;
+    border: 2px dashed var(--pencil);
+    background: none;
+    color: var(--pencil);
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-family: 'Kalam', cursive;
+    font-size: .95rem;
+    transition: transform .15s, box-shadow .15s;
+  }
+  
+  #desktopNav button:hover {
+    background: var(--pencil-dark);
+    color: var(--paper);
+    transform: translate(1px,1px) rotate(-.5deg);
+    box-shadow: 1px 1px 0 var(--pencil-dark);
+  }
+  
   #hamburger{display:none;font-size:2rem;background:none;border:none;cursor:pointer;color:var(--pencil)}
   #sideMenu{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:20;opacity:0;visibility:hidden;transition:opacity .25s}
   #sideMenu.open{opacity:1;visibility:visible}
@@ -96,6 +182,15 @@
   #sideMenu.open .drawer{left:0}
   .drawer a{padding:1rem 1.5rem;font-family:'Kalam',cursive;font-size:1.25rem;border-bottom:1px dashed var(--pencil)}
   .closeBtn{align-self:flex-end;margin:0 .5rem .5rem;font-size:2rem;background:none;border:none;color:var(--pencil)}
+  
+  .drawer a {
+    transition: transform .15s, box-shadow .15s;
+  }
+  .drawer a:hover {
+    transform: translate(1px,1px) rotate(-.5deg);
+    box-shadow: 1px 1px 0 var(--pencil-dark);
+  }
+  
   @media(max-width:768px){#hamburger{display:block}#desktopNav{display:none}}
   @media(min-width:769px){#hamburger{display:none}#desktopNav{display:flex;align-items:center}}
   
@@ -363,11 +458,9 @@
   footer{text-align:center;padding:2rem 0;font-size:.9rem;color:var(--pencil-light)}
   
   /* ---- Animations & Interactions ---- */
-  #desktopNav a,
   .drawer a{
     transition:transform .15s, box-shadow .15s;
   }
-  #desktopNav a:hover,
   .drawer a:hover{
     transform:translate(1px,1px) rotate(-.5deg);
     box-shadow:1px 1px 0 var(--pencil-dark);
@@ -600,34 +693,6 @@
   }
   .handwriting .handwritten::after {
     width: 100%;
-  }
-  
-  /* ---- Interactive Navigation ---- */
-  .nav-link {
-    position: relative;
-    display: inline-block;
-  }
-  .nav-link::before {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: var(--pencil-dark);
-    transform: scaleX(0);
-    transform-origin: right;
-    transition: transform 0.3s;
-  }
-  .nav-link:hover::before {
-    transform: scaleX(1);
-    transform-origin: left;
-  }
-  
-  /* ---- 3D Card Tilt Effect ---- */
-  .card-3d {
-    transform-style: preserve-3d;
-    transition: transform 0.3s;
   }
   
   /* ---- Interactive Background ---- */
@@ -1345,6 +1410,46 @@
       margin: 0.75rem;
     }
   }
+  
+  /* ---- NEW NAVIGATION MEDIA QUERY ---- */
+  @media (min-width: 1024px) {
+    #desktopNav .nav-item {
+      position: relative;
+      cursor: pointer;
+      padding: 5px 14px;
+    }
+    #desktopNav .circle-wrapper {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 280%;
+      height: 156%;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+    }
+    #desktopNav svg {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+    #desktopNav path.circle-path {
+      stroke: var(--accent);
+      stroke-width: 3;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+    }
+    #desktopNav .nav-item.active path.circle-path {
+      animation: drawCircle 1.2s ease forwards;
+    }
+    @keyframes drawCircle {
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+  }
   </style>
 </head>
 <body>
@@ -1366,12 +1471,90 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <span class="logo">Dax Patel</span>
   <!-- Desktop Nav -->
   <nav id="desktopNav">
-    <a href="#about" class="nav-link">About</a>
-    <a href="#value" class="nav-link">Value</a>
-    <a href="#experience" class="nav-link">Experience</a>
-    <a href="#projects" class="nav-link">Projects</a>
-    <a href="#skills" class="nav-link">Skills</a>
-    <a href="#contact" class="nav-link">Contact</a>
+    <a href="#about" class="nav-link nav-item" data-section="about">
+      About
+      <div class="circle-wrapper">
+        <svg viewBox="0 0 280 120">
+          <path class="circle-path" d="M60,30 
+            Q150,5 230,40 
+            Q260,60 220,95 
+            Q150,115 60,90 
+            Q20,60 40,35" />
+        </svg>
+      </div>
+    </a>
+    <a href="#value" class="nav-link nav-item" data-section="value">
+      Value
+      <div class="circle-wrapper">
+        <svg viewBox="0 0 280 120">
+          <path class="circle-path" d="M60,30 
+            Q150,5 230,40 
+            Q260,60 220,95 
+            Q150,115 60,90 
+            Q20,60 40,35" />
+        </svg>
+      </div>
+    </a>
+    <a href="#experience" class="nav-link nav-item" data-section="experience">
+      Experience
+      <div class="circle-wrapper">
+        <svg viewBox="0 0 280 120">
+          <path class="circle-path" d="M60,30 
+            Q150,5 230,40 
+            Q260,60 220,95 
+            Q150,115 60,90 
+            Q20,60 40,35" />
+        </svg>
+      </div>
+    </a>
+    <a href="#education" class="nav-link nav-item" data-section="education">
+      Education
+      <div class="circle-wrapper">
+        <svg viewBox="0 0 280 120">
+          <path class="circle-path" d="M60,30 
+            Q150,5 230,40 
+            Q260,60 220,95 
+            Q150,115 60,90 
+            Q20,60 40,35" />
+        </svg>
+      </div>
+    </a>
+    <a href="#projects" class="nav-link nav-item" data-section="projects">
+      Projects
+      <div class="circle-wrapper">
+        <svg viewBox="0 0 280 120">
+          <path class="circle-path" d="M60,30 
+            Q150,5 230,40 
+            Q260,60 220,95 
+            Q150,115 60,90 
+            Q20,60 40,35" />
+        </svg>
+      </div>
+    </a>
+    <a href="#skills" class="nav-link nav-item" data-section="skills">
+      Skills
+      <div class="circle-wrapper">
+        <svg viewBox="0 0 280 120">
+          <path class="circle-path" d="M60,30 
+            Q150,5 230,40 
+            Q260,60 220,95 
+            Q150,115 60,90 
+            Q20,60 40,35" />
+        </svg>
+      </div>
+    </a>
+    <a href="#contact" class="nav-link nav-item" data-section="contact">
+      Contact
+      <div class="circle-wrapper">
+        <svg viewBox="0 0 280 120">
+          <path class="circle-path" d="M60,30 
+            Q150,5 230,40 
+            Q260,60 220,95 
+            Q150,115 60,90 
+            Q20,60 40,35" />
+        </svg>
+      </div>
+    </a>
     <button id="modeBtn" onclick="toggleMode()" title="toggle theme" aria-label="toggle theme">🌑</button>
   </nav>
   <button id="hamburger" aria-label="open menu">✏️</button>
@@ -1383,6 +1566,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a href="#about" class="nav-link">About</a>
     <a href="#value" class="nav-link">Value</a>
     <a href="#experience" class="nav-link">Experience</a>
+    <a href="#education" class="nav-link">Education</a>
     <a href="#projects" class="nav-link">Projects</a>
     <a href="#skills" class="nav-link">Skills</a>
     <a href="#contact" class="nav-link">Contact</a>
@@ -1597,7 +1781,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           
           <h4>My Approach</h4>
           <ul>
-            <li>Built a spiritual chatbot offering personalized Gita-based advice using AI-driven dialogue systems</li>
+            <li>Built a spiritualbot chat offering personalized Gita-based advice using AI-driven dialogue systems</li>
             <li>Designed core logic and module for scalable Q&A interactions</li>
             <li>Collaborated with spiritual scholars to ensure accurate interpretation of texts</li>
             <li>Implemented continuous feedback loops to improve response quality and relevance</li>
@@ -1667,7 +1851,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="skills-grid">
           <div class="skill-item">
             <div class="skill-name">ClickUp</div>
-            <div class="skill-bar"><div class="skill-level" data-level="90"></div></div>
+            <div class="skill-bar"><div class="skill-level" data-level="80"></div></div>
             <div class="skill-description">Comprehensive project management and collaboration tool</div>
           </div>
           <div class="skill-item">
@@ -1677,17 +1861,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
           <div class="skill-item">
             <div class="skill-name">Monday.com</div>
-            <div class="skill-bar"><div class="skill-level" data-level="80"></div></div>
+            <div class="skill-bar"><div class="skill-level" data-level="85"></div></div>
             <div class="skill-description">Work OS for teams to manage projects and workflows</div>
           </div>
           <div class="skill-item">
             <div class="skill-name">Upwork</div>
-            <div class="skill-bar"><div class="skill-level" data-level="75"></div></div>
+            <div class="skill-bar"><div class="skill-level" data-level="85"></div></div>
             <div class="skill-description">Platform for freelancing and remote work management</div>
           </div>
           <div class="skill-item">
             <div class="skill-name">Slack</div>
-            <div class="skill-bar"><div class="skill-level" data-level="95"></div></div>
+            <div class="skill-bar"><div class="skill-level" data-level="90"></div></div>
             <div class="skill-description">Team communication and collaboration platform</div>
           </div>
         </div>
@@ -1698,17 +1882,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="skills-grid">
           <div class="skill-item">
             <div class="skill-name">Gujarati</div>
-            <div class="skill-bar"><div class="skill-level" data-level="100"></div></div>
+            <div class="skill-bar"><div class="skill-level" data-level="95"></div></div>
             <div class="skill-description">Native language</div>
           </div>
           <div class="skill-item">
             <div class="skill-name">Hindi</div>
-            <div class="skill-bar"><div class="skill-level" data-level="95"></div></div>
+            <div class="skill-bar"><div class="skill-level" data-level="90"></div></div>
             <div class="skill-description">Fluent communication</div>
           </div>
           <div class="skill-item">
             <div class="skill-name">English</div>
-            <div class="skill-bar"><div class="skill-level" data-level="90"></div></div>
+            <div class="skill-bar"><div class="skill-level" data-level="89"></div></div>
             <div class="skill-description">Professional proficiency</div>
           </div>
         </div>
@@ -1802,7 +1986,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <!-- Feedback message container -->
       <div id="formFeedback" class="form-feedback"></div>
     </form>
-
     <div class="sticky-note green" style="max-width: 400px; margin: 20px auto;">
       <p style="text-align: center;">I\'ll get back to you faster than you can say "Worcestershire"! 📝✨</p>
     </div>
@@ -1820,6 +2003,7 @@ let mouseY = 0;
 let stickyNotes = [];
 let timelineItems = [];
 let card3DElements = [];
+let justClicked = false; // Flag to prevent scroll interference after click
 /* ---- Initialize Interactive Elements ---- */
 window.addEventListener('load', () => {
   // Initialize interactive elements
@@ -1837,6 +2021,12 @@ window.addEventListener('load', () => {
   
   // Track visitor analytics
   trackVisitor();
+  
+  // Initialize navigation highlighting
+  initNavigationHighlighting();
+  
+  // Activate the first navigation item by default
+  activateNavItem('about');
 });
 /* ---- Track Visitor Analytics ---- */
 function trackVisitor() {
@@ -2092,6 +2282,9 @@ function handleMouseMove(e) {
 }
 /* ---- Scroll Animations ---- */
 function handleScroll() {
+  // If we just clicked a nav item, skip scroll-based navigation updates
+  if (justClicked) return;
+  
   // Back to top button visibility
   const backToTopButton = document.getElementById('backToTop');
   if (window.pageYOffset > 300) {
@@ -2117,6 +2310,9 @@ function handleScroll() {
       bar.style.width = level + '%';
     }
   });
+  
+  // Navigation highlighting based on scroll position
+  updateNavigationOnScroll();
 }
 /* ---- Window Resize Handler ---- */
 function handleResize() {
@@ -2125,6 +2321,16 @@ function handleResize() {
 /* ---- Smooth scroll anchors ---- */
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
   a.addEventListener('click',e=>{
+    // If this is a navigation item, set the justClicked flag
+    if (a.classList.contains('nav-item')) {
+      justClicked = true;
+      
+      // Clear the flag after a short delay to allow scrolling to complete
+      setTimeout(() => {
+        justClicked = false;
+      }, 1000);
+    }
+    
     e.preventDefault();
     const tgt=document.querySelector(a.getAttribute('href'));
     if(tgt) tgt.scrollIntoView({behavior:'smooth'});
@@ -2166,7 +2372,11 @@ document.getElementById('year').textContent=new Date().getFullYear();
 /* ---- Click sound and visualization ---- */
 const clickSound = new Audio('data:audio/wav;base64,UklGRigAAABXQVZFZm10IBIAAAABAAEARKwAAIhYAQACABAAAABkYXRhAgAAAAEA');
 document.addEventListener('click', e=>{
-  if(e.target.tagName==='A' || e.target.tagName==='BUTTON' || e.target.classList.contains('download-resume')) {
+  // Check if the clicked element is a desktop navigation item
+  const isDesktopNavItem = e.target.closest('#desktopNav .nav-item');
+  
+  // Only trigger effects if it's not a desktop navigation item
+  if((e.target.tagName==='A' || e.target.tagName==='BUTTON' || e.target.classList.contains('download-resume')) && !isDesktopNavItem) {
     clickSound.currentTime=0;
     clickSound.play().catch(()=>{});
     
@@ -2239,7 +2449,6 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
     }, 5000);
   });
 });
-
 // Check if we were redirected after successful form submission
 window.addEventListener('load', function() {
   const urlParams = new URLSearchParams(window.location.search);
@@ -2300,6 +2509,69 @@ function addRandomDoodles() {
 }
 // Add doodles when page loads
 window.addEventListener('load', addRandomDoodles);
+/* ---- Navigation Highlighting ---- */
+function initNavigationHighlighting() {
+  // Set up navigation highlighting based on scroll position
+  const sections = document.querySelectorAll('section.page');
+  const navItems = document.querySelectorAll('#desktopNav .nav-item');
+  
+  // Handle click events on navigation items
+  navItems.forEach(item => {
+    item.addEventListener('click', function(e) {
+      // Get the section ID from data-section attribute
+      const sectionId = this.getAttribute('data-section');
+      
+      // Set the justClicked flag to prevent scroll interference
+      justClicked = true;
+      
+      // Activate the clicked nav item
+      activateNavItem(sectionId);
+      
+      // Clear the flag after a short delay to allow scrolling to complete
+      setTimeout(() => {
+        justClicked = false;
+      }, 1000);
+    });
+  });
+}
+/* ---- Update Navigation on Scroll ---- */
+function updateNavigationOnScroll() {
+  const sections = document.querySelectorAll('section.page');
+  const navItems = document.querySelectorAll('#desktopNav .nav-item');
+  
+  let current = '';
+  
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop;
+    const sectionHeight = section.clientHeight;
+    if (pageYOffset >= (sectionTop - 200)) {
+      current = section.getAttribute('id');
+    }
+  });
+  
+  navItems.forEach(item => {
+    item.classList.remove('active');
+    if (item.getAttribute('data-section') === current) {
+      item.classList.add('active');
+    }
+  });
+}
+/* ---- Activate Navigation Item ---- */
+function activateNavItem(sectionId) {
+  const navItems = document.querySelectorAll('#desktopNav .nav-item');
+  
+  // Remove active class from all items
+  navItems.forEach(item => {
+    item.classList.remove('active');
+  });
+  
+  // Add active class to the matching item
+  navItems.forEach(item => {
+    if (item.getAttribute('data-section') === sectionId) {
+      item.classList.add('active');
+    }
+  });
+}
 </script>
 </body>
 </html>
