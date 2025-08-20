@@ -16,9 +16,13 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','GTM-KJNSN2CM');</script>
+  <!-- Font Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- Handwriting & sketch fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Caveat+Brush&family=Shadows+Into+Light&family=Architects+Daughter&display=swap" rel="stylesheet">
   <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+  <!-- Critical CSS Inlined -->
   <style>
   /* ---- CSS Variables – only graphite shades ---- */
   :root{
@@ -60,7 +64,6 @@
     color:var(--pencil-dark);
     line-height:1.65;
     scroll-behavior:smooth;
-    /* hand-drawn paper SVG repeat */
     background-image:
       url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='.03'/%3E%3C/svg%3E");
     min-height:100vh;
@@ -1581,8 +1584,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h1 class="handwritten">Dax&nbsp;<span style="color:var(--accent)">Patel</span></h1>
         <h2 class="handwritten">I like clean boards, clear priorities, and conversations that get to the point but the real magic is adapting because no two teams or projects are ever the same.</h2>
       </div>
-      <!-- Replace with your sketch -->
-      <img class="profile-sketch" src="profile.png" alt="Dax Patel sketch">
+      <!-- Optimized Profile Image -->
+      <picture>
+        <source srcset="profile.webp" type="image/webp">
+        <source srcset="profile.jpg" type="image/jpeg">
+        <img class="profile-sketch" src="profile.jpg" alt="Dax Patel sketch" width="400" height="400" loading="eager">
+      </picture>
     </div>
    
     <div class="note">
@@ -1604,8 +1611,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <a href="mailto:daxp2909@gmail.com">daxp2909@gmail.com</a><br>
       <a href="https://www.linkedin.com/in/saulty/" class="social-icon" target="_blank" rel="noopener" style="margin-right:.6rem">LinkedIn</a>
       <a href="https://github.com/daxp2909" class="social-icon" target="_blank" rel="noopener" style="margin-right:.6rem">GitHub</a>
-      <!-- <a href="https://twitter.com/" class="social-icon" target="_blank" rel="noopener" style="margin-right:.6rem">Twitter</a>
-      <a href="https://facebook.com/" class="social-icon" target="_blank" rel="noopener">Facebook</a> -->
     </p>  
   </section>
   <!-- Value Proposition -->
@@ -1726,14 +1731,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h3 class="case-study-title">HopeLine</h3>
         <div class="case-study-tags">
           <span class="case-study-tag">Project Lead</span>
-        <!--  <span class="case-study-tag">Mental Health</span>
-          <span class="case-study-tag">User-Centered Design</span> -->
         </div>
       </div>
       
       <div class="case-study-content">
         <div class="case-study-image">
-          <img src="I1" alt="HopeLine Project">
+          <!-- Optimized Project Image -->
+          <picture>
+            <source srcset="I1.webp" type="image/webp">
+            <source srcset="I1.jpg" type="image/jpeg">
+            <img src="I1.jpg" alt="HopeLine Project" width="600" height="450" loading="lazy">
+          </picture>
         </div>
         
         <div class="case-study-details">
@@ -1765,14 +1773,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h3 class="case-study-title">SarthiAI</h3>
         <div class="case-study-tags">
           <span class="case-study-tag">Technical Lead</span>
-       <!--   <span class="case-study-tag">AI/ML</span>
-          <span class="case-study-tag">Spiritual Technology</span> -->
         </div>
       </div>
       
       <div class="case-study-content">
         <div class="case-study-image">
-          <img src="I2" alt="SarthiAI Project">
+          <!-- Optimized Project Image -->
+          <picture>
+            <source srcset="I2.webp" type="image/webp">
+            <source srcset="I2.jpg" type="image/jpeg">
+            <img src="I2.jpg" alt="SarthiAI Project" width="600" height="450" loading="lazy">
+          </picture>
         </div>
         
         <div class="case-study-details">
@@ -1805,14 +1816,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h3 class="case-study-title">Smart Traffic Light</h3>
         <div class="case-study-tags">
           <span class="case-study-tag">Project Lead</span>
-          <!-- <span class="case-study-tag">IoT</span>
-          <span class="case-study-tag">Urban Innovation</span> -->
         </div>
       </div>
       
       <div class="case-study-content">
         <div class="case-study-image">
-          <img src="I3" alt="Smart Traffic Light Project">
+          <!-- Optimized Project Image -->
+          <picture>
+            <source srcset="I3.webp" type="image/webp">
+            <source srcset="I3.jpg" type="image/jpeg">
+            <img src="I3.jpg" alt="Smart Traffic Light Project" width="600" height="450" loading="lazy">
+          </picture>
         </div>
         
         <div class="case-study-details">
@@ -1925,14 +1939,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <section id="cta" class="page">
     <div class="cta-container">
       <h2 class="cta-heading handwritten">Ready to Build Something Amazing Together?</h2>
-     <!-- <p class="cta-subheading">I'm currently seeking opportunities where I can apply my project management expertise to drive meaningful results.</p> -->
       
       <div class="cta-buttons">
         <a href="#contact" class="cta-button cta-button-primary">
           <span class="cta-button-icon">📧</span>
           Get In Touch
         </a>
-        <a href="https://calendly.com/daxp2909/30min"  target="_blank" class="cta-button cta-button-secondary" id="scheduleCall">
+        <a href="https://calendly.com/daxp2909/30min" target="_blank" class="cta-button cta-button-secondary" id="scheduleCall">
           <span class="cta-button-icon">📅</span>
           Schedule a Call
         </a>
@@ -1959,13 +1972,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <p>Let's connect and discuss professional opportunities</p>
         <a href="https://www.linkedin.com/in/saulty/" target="_blank" rel="noopener">Let's connect</a>
       </div>
-      
-  <!--    <div class="contact-option">
-        <div class="contact-option-icon">📱</div>
-        <h3>Phone</h3>
-        <p>For urgent matters and quick conversations</p>
-        <a href="tel:+911234567890">+91 </a>
-      </div> -->
     </div>
     
     <!-- Updated Form -->
@@ -1996,7 +2002,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div id="backToTop" aria-label="back to top">↑</div>
 <!-- Sound Wave Visualization -->
 <div class="sound-wave" id="soundWave"></div>
-<script>
+<!-- Optimized JavaScript -->
+<script defer>
 let particles = [];
 let mouseX = 0;
 let mouseY = 0;
@@ -2004,6 +2011,7 @@ let stickyNotes = [];
 let timelineItems = [];
 let card3DElements = [];
 let justClicked = false; // Flag to prevent scroll interference after click
+
 /* ---- Initialize Interactive Elements ---- */
 window.addEventListener('load', () => {
   // Initialize interactive elements
@@ -2028,6 +2036,7 @@ window.addEventListener('load', () => {
   // Activate the first navigation item by default
   activateNavItem('about');
 });
+
 /* ---- Track Visitor Analytics ---- */
 function trackVisitor() {
   // This is a placeholder for actual analytics implementation
@@ -2040,6 +2049,7 @@ function trackVisitor() {
   localStorage.setItem('portfolioViews', views);
   console.log(`Portfolio views: ${views}`);
 }
+
 /* ---- Initialize Interactive Elements ---- */
 function initInteractiveElements() {
   // Initialize sticky notes
@@ -2061,30 +2071,19 @@ function initInteractiveElements() {
   // Initialize 3D cards
   card3DElements = document.querySelectorAll('.card-3d');
   
-  // Add scroll event listeners
-  window.addEventListener('scroll', handleScroll);
+  // Add scroll event listeners with passive flag
+  window.addEventListener('scroll', handleScroll, { passive: true });
   
   // Add mouse move event listener
   document.addEventListener('mousemove', handleMouseMove);
   
-  // Add window resize event listener
-  window.addEventListener('resize', handleResize);
+  // Add window resize event listener with passive flag
+  window.addEventListener('resize', handleResize, { passive: true });
   
   // Initialize handwriting animation
   initHandwritingAnimation();
-  
-  // Initialize schedule call button
- // document.getElementById('scheduleCall').addEventListener('click', function(e) {
-   // e.preventDefault();
-   // alert('In a real implementation, this would open a scheduling tool like Calendly. For now, please use the contact form to reach out.');
- // });
-  
-  // Initialize download resume button
-//  document.getElementById('downloadResume').addEventListener('click', function(e) {
- //   e.preventDefault();
- //   alert('In a real implementation, this would download your resume PDF. For now, please use the contact form to request a copy.');
-//  });
 }
+
 /* ---- Dynamic Availability Status ---- */
 function updateAvailabilityStatus() {
   const now = new Date();
@@ -2118,6 +2117,7 @@ function updateAvailabilityStatus() {
     availabilityText.textContent = 'Unavailable';
   }
 }
+
 /* ---- Particle System ---- */
 function createParticles(x, y, count) {
   for (let i = 0; i < count; i++) {
@@ -2144,6 +2144,7 @@ function createParticles(x, y, count) {
     });
   }
 }
+
 function animateParticles() {
   particles.forEach((particle, index) => {
     particle.x += particle.vx;
@@ -2163,6 +2164,7 @@ function animateParticles() {
   
   requestAnimationFrame(animateParticles);
 }
+
 /* ---- Interactive Background ---- */
 function animateInteractiveBackground() {
   const bg = document.getElementById('interactiveBg');
@@ -2186,6 +2188,7 @@ function animateInteractiveBackground() {
   
   requestAnimationFrame(animateInteractiveBackground);
 }
+
 /* ---- Sound Wave Visualization ---- */
 function createSoundWave(x, y) {
   const soundWave = document.getElementById('soundWave');
@@ -2205,6 +2208,7 @@ function createSoundWave(x, y) {
     soundWave.style.transform = 'scale(0)';
   }, 600);
 }
+
 /* ---- Handwritten Text Animation ---- */
 function initHandwritingAnimation() {
   const observerOptions = {
@@ -2224,6 +2228,7 @@ function initHandwritingAnimation() {
     handwritingObserver.observe(element);
   });
 }
+
 /* ---- Draggable Sticky Notes ---- */
 function makeDraggable(element) {
   let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
@@ -2264,6 +2269,7 @@ function makeDraggable(element) {
     }, 500);
   }
 }
+
 /* ---- 3D Card Tilt Effect ---- */
 function handleMouseMove(e) {
   mouseX = e.clientX;
@@ -2280,6 +2286,7 @@ function handleMouseMove(e) {
     card.style.transform = `rotateX(${angleX}deg) rotateY(${angleY}deg)`;
   });
 }
+
 /* ---- Scroll Animations ---- */
 function handleScroll() {
   // If we just clicked a nav item, skip scroll-based navigation updates
@@ -2314,10 +2321,12 @@ function handleScroll() {
   // Navigation highlighting based on scroll position
   updateNavigationOnScroll();
 }
+
 /* ---- Window Resize Handler ---- */
 function handleResize() {
   // No need to handle canvas resize since we removed drawing functionality
 }
+
 /* ---- Smooth scroll anchors ---- */
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
   a.addEventListener('click',e=>{
@@ -2339,6 +2348,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
     document.getElementById('sideMenu').setAttribute('aria-hidden','true');
   });
 });
+
 /* ---- Mobile drawer controls ---- */
 const sideMenu=document.getElementById('sideMenu');
 document.getElementById('hamburger').addEventListener('click',()=>{
@@ -2355,6 +2365,7 @@ sideMenu.addEventListener('click',e=>{
     sideMenu.setAttribute('aria-hidden','true');
   }
 });
+
 /* ---- Dark / Light toggle ---- */
 function toggleMode(){
   document.body.classList.toggle('dark');
@@ -2362,13 +2373,16 @@ function toggleMode(){
   // Save preference
   localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
 }
+
 // Check for saved theme preference
 if (localStorage.getItem('theme') === 'dark' || 
     (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
   document.body.classList.add('dark');
   document.getElementById('modeBtn').textContent = '☀️';
 }
+
 document.getElementById('year').textContent=new Date().getFullYear();
+
 /* ---- Click sound and visualization ---- */
 const clickSound = new Audio('data:audio/wav;base64,UklGRigAAABXQVZFZm10IBIAAAABAAEARKwAAIhYAQACABAAAABkYXRhAgAAAAEA');
 document.addEventListener('click', e=>{
@@ -2387,6 +2401,7 @@ document.addEventListener('click', e=>{
     createParticles(e.clientX, e.clientY, 3);
   }
 });
+
 /* ---- Back to top button ---- */
 document.getElementById('backToTop').addEventListener('click', () => {
   window.scrollTo({
@@ -2394,6 +2409,7 @@ document.getElementById('backToTop').addEventListener('click', () => {
     behavior: 'smooth'
   });
 });
+
 /* ---- Form submission feedback ---- */
 document.getElementById('contactForm').addEventListener('submit', function(e) {
   e.preventDefault(); // Prevent default form submission
@@ -2449,6 +2465,7 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
     }, 5000);
   });
 });
+
 // Check if we were redirected after successful form submission
 window.addEventListener('load', function() {
   const urlParams = new URLSearchParams(window.location.search);
@@ -2468,6 +2485,7 @@ window.addEventListener('load', function() {
     window.history.replaceState({}, document.title, newUrl);
   }
 });
+
 /* ---- Add random doodles to sections ---- */
 function addRandomDoodles() {
   const sections = document.querySelectorAll('section.page');
@@ -2507,8 +2525,15 @@ function addRandomDoodles() {
     }
   });
 }
-// Add doodles when page loads
-window.addEventListener('load', addRandomDoodles);
+
+// Add doodles when page loads using requestIdleCallback
+if ('requestIdleCallback' in window) {
+  requestIdleCallback(addRandomDoodles);
+} else {
+  // Fallback for browsers that don't support requestIdleCallback
+  setTimeout(addRandomDoodles, 500);
+}
+
 /* ---- Navigation Highlighting ---- */
 function initNavigationHighlighting() {
   // Set up navigation highlighting based on scroll position
@@ -2534,6 +2559,7 @@ function initNavigationHighlighting() {
     });
   });
 }
+
 /* ---- Update Navigation on Scroll ---- */
 function updateNavigationOnScroll() {
   const sections = document.querySelectorAll('section.page');
@@ -2556,6 +2582,7 @@ function updateNavigationOnScroll() {
     }
   });
 }
+
 /* ---- Activate Navigation Item ---- */
 function activateNavItem(sectionId) {
   const navItems = document.querySelectorAll('#desktopNav .nav-item');
